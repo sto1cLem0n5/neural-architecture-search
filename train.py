@@ -1,7 +1,10 @@
 import numpy as np
 import csv
 
-import tensorflow as tf
+# import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+
 from keras import backend as K
 from keras.datasets import cifar10
 from keras.utils import to_categorical
@@ -11,7 +14,8 @@ from manager import NetworkManager
 from model import model_fn
 
 # create a shared session between Keras and Tensorflow
-policy_sess = tf.Session()
+# policy_sess = tf.Session()
+policy_sess = tf.compat.v1.Session()
 K.set_session(policy_sess)
 
 NUM_LAYERS = 4  # number of layers of the state space

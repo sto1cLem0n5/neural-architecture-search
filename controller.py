@@ -265,12 +265,13 @@ class Controller:
             K.set_session(self.policy_session)
 
             with tf.name_scope('controller'):
-                with tf.variable_scope('policy_network'):
+                # with tf.variable_scope('policy_network'):
+                with tf.compat.v1.variable_scope('policy_network'):
 
                     # state input is the first input fed into the controller RNN.
                     # the rest of the inputs are fed to the RNN internally
                     with tf.name_scope('state_input'):
-                        state_input = tf.placeholder(dtype=tf.int32, shape=(1, None), name='state_input')
+                        state_input = tf.compat.v1.placeholder(dtype=tf.int32, shape=(1, None), name='state_input')
 
                     self.state_input = state_input
 
